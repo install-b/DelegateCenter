@@ -1,0 +1,16 @@
+PODS:
+  - DelegateCenter (0.1.0)
+
+DEPENDENCIES:
+  - DelegateCenter (from `../`)
+
+EXTERNAL SOURCES:
+  DelegateCenter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  DelegateCenter: 5f0a22c562b54b9ab9327edea90e80554b630c2a
+
+PODFILE CHECKSUM: 915edd4e1f1c9a9c33e4ff30966ef17f11bd909c
+
+COCOAPODS: 1.8.4
