@@ -9,6 +9,31 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+
+
+subscript protocol
+
+```Swift
+
+// declare Protocol
+@objc protocol XXXProtocol: NSObjectProtocol {
+    func aMethod()
+}
+
+// on subscribe
+DelegateCenter.default.add(self as XXXProtocol)
+
+// cancel subscribe
+DelegateCenter.default.remove(self as XXXProtocol)
+
+
+
+// send message
+DelegateCenter.default.enumDelegate(XXXProtocol.self) { (delegate, _) in
+            delegate.aMethod()
+        }
+```
+
 ## Requirements
 
 ## Installation
@@ -27,3 +52,5 @@ install-b, 645256685@qq.com
 ## License
 
 DelegateCenter is available under the MIT license. See the LICENSE file for more info.
+
+

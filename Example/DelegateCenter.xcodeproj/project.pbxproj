@@ -19,6 +19,10 @@
 		B9A85E4124B157C200AE2087 /* UIImage-Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A85E4024B157C200AE2087 /* UIImage-Ex.swift */; };
 		B9A85E4324B158A200AE2087 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A85E4224B158A200AE2087 /* UIColor-Extension.swift */; };
 		B9A85E4524B15E4C00AE2087 /* RegularTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A85E4424B15E4C00AE2087 /* RegularTextField.swift */; };
+		B9F8B66924B1A08600A45E6E /* TableViewController0.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8B66824B1A08600A45E6E /* TableViewController0.swift */; };
+		B9F8B66B24B1A14A00A45E6E /* TableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8B66A24B1A14A00A45E6E /* TableViewController1.swift */; };
+		B9F8B66D24B1A23E00A45E6E /* SubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8B66C24B1A23E00A45E6E /* SubViewController.swift */; };
+		B9F8B66F24B1A2F900A45E6E /* AddDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8B66E24B1A2F900A45E6E /* AddDataSourceProtocol.swift */; };
 		EDE5E1EB7165C11FB67E531D /* Pods_DelegateCenter_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026D3EE65DD8537A3F263648 /* Pods_DelegateCenter_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +58,10 @@
 		B9A85E4024B157C200AE2087 /* UIImage-Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Ex.swift"; sourceTree = "<group>"; };
 		B9A85E4224B158A200AE2087 /* UIColor-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
 		B9A85E4424B15E4C00AE2087 /* RegularTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularTextField.swift; sourceTree = "<group>"; };
+		B9F8B66824B1A08600A45E6E /* TableViewController0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController0.swift; sourceTree = "<group>"; };
+		B9F8B66A24B1A14A00A45E6E /* TableViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController1.swift; sourceTree = "<group>"; };
+		B9F8B66C24B1A23E00A45E6E /* SubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewController.swift; sourceTree = "<group>"; };
+		B9F8B66E24B1A2F900A45E6E /* AddDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDataSourceProtocol.swift; sourceTree = "<group>"; };
 		E193C4EBF3C52E023B33E04A /* Pods-DelegateCenter_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DelegateCenter_Example.debug.xcconfig"; path = "Target Support Files/Pods-DelegateCenter_Example/Pods-DelegateCenter_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +127,10 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				B9F8B66E24B1A2F900A45E6E /* AddDataSourceProtocol.swift */,
+				B9F8B66C24B1A23E00A45E6E /* SubViewController.swift */,
+				B9F8B66824B1A08600A45E6E /* TableViewController0.swift */,
+				B9F8B66A24B1A14A00A45E6E /* TableViewController1.swift */,
 				B96D70BC24B0891B0060C6C1 /* TimerCenter.swift */,
 				B9A85E3924B1534200AE2087 /* Login */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -330,11 +342,15 @@
 			files = (
 				B9A85E3F24B1534200AE2087 /* LoginInputCell.swift in Sources */,
 				B9A85E3E24B1534200AE2087 /* LoginRegisterViewController.swift in Sources */,
+				B9F8B66D24B1A23E00A45E6E /* SubViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				B9F8B66F24B1A2F900A45E6E /* AddDataSourceProtocol.swift in Sources */,
 				B96D70BD24B0891B0060C6C1 /* TimerCenter.swift in Sources */,
 				B9A85E4524B15E4C00AE2087 /* RegularTextField.swift in Sources */,
 				B9A85E4124B157C200AE2087 /* UIImage-Ex.swift in Sources */,
 				B9A85E4324B158A200AE2087 /* UIColor-Extension.swift in Sources */,
+				B9F8B66B24B1A14A00A45E6E /* TableViewController1.swift in Sources */,
+				B9F8B66924B1A08600A45E6E /* TableViewController0.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
