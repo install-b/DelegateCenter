@@ -1,16 +1,23 @@
 PODS:
   - DelegateCenter (0.1.0)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - DelegateCenter (from `../`)
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
 
 EXTERNAL SOURCES:
   DelegateCenter:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DelegateCenter: 5f0a22c562b54b9ab9327edea90e80554b630c2a
+  DelegateCenter: 990f7bf4b41ecb14e55bf5f3b380147e33742814
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 915edd4e1f1c9a9c33e4ff30966ef17f11bd909c
+PODFILE CHECKSUM: 92e880953219234fdf61e23313d59b874d06ccb8
 
 COCOAPODS: 1.8.4

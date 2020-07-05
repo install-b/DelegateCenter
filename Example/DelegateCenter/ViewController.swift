@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DelegateCenter
 
 class ViewController: UIViewController {
 
@@ -20,5 +21,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func timeDown(_ sender: Any) {
+        let vc = LoginRegisterViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 

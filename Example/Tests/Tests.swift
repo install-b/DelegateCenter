@@ -1,5 +1,4 @@
 import XCTest
-import DelegateCenter
 
 class Tests: XCTestCase {
     
