@@ -2,7 +2,7 @@ use_frameworks!
 
 target 'DelegateCenter_Example' do
   pod 'DelegateCenter', :path => '../'
-  pod 'SnapKit', -> ''
+  pod 'SnapKit'
   
 #  target 'DelegateCenter_Tests' do
 #    inherit! :search_paths
