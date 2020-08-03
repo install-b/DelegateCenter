@@ -8,6 +8,9 @@
 
 import Foundation
 
+public typealias ObjectClass = AnyObject
+
+
 /// 多代理链表  代理变化协议
 @objc public protocol MultiProxyObjectDelegate {
     /// 代理数量变化监听方法
@@ -15,7 +18,9 @@ import Foundation
 }
 
 /// 多代理对象 链表
-open class MultiProxyObject<T>: SafeExcute where T: NSObjectProtocol {
+open class MultiProxyObject<T>: SafeExcuteWrapper where T: ObjectClass {
+    public let safeExcute: SafeExcute = SafeExcute()
+    
     /// 代理数量 
     public private(set) var proxyCount: Int = 0 {
         didSet {
@@ -25,10 +30,14 @@ open class MultiProxyObject<T>: SafeExcute where T: NSObjectProtocol {
     }
     
     /// 代理集合 链表
-    private var proxyLink: WeakProxyLink<T>?
+    private var proxyLink: WeakLinkNode<T>?
     
     /// 代理
     public weak var delegate: MultiProxyObjectDelegate?
+    
+    public init() {
+        
+    }
 }
 
 public extension MultiProxyObject {
@@ -39,14 +48,14 @@ public extension MultiProxyObject {
     func add(delegate: T) -> Bool {
         return excute {
             guard proxyLink != nil else {
-                proxyLink = WeakProxyLink<T>(proxy: delegate)
+                proxyLink = WeakLinkNode<T>(val: delegate)
                 /// 代理数为1
                 proxyCount = 1
                 return true
             }
             var has = false
             proxyCount = enumrate(addNext: delegate, using: { (proxy) -> Bool in
-                if delegate.isEqual(proxy)  {
+                if delegate === proxy  { 
                     has = true
                     return true
                 }
@@ -64,7 +73,7 @@ public extension MultiProxyObject {
             guard proxyLink != nil else {  proxyCount = 0; return false }
             var result = false
             proxyCount = enumrate(using: { (proxy) -> Bool in
-                if delegate.isEqual(proxy)  {
+                if  delegate === proxy   {
                     result = true
                     return true
                 }
@@ -104,27 +113,27 @@ extension MultiProxyObject {
     private func enumrate(addNext add: T? = nil, using block:((_ delegate: T) -> Bool)) -> Int {
         guard var link = proxyLink else {
             if let addObj = add {
-                proxyLink = WeakProxyLink<T>(proxy: addObj)
+                proxyLink = WeakLinkNode<T>(val: addObj)
                 return 1
             }
 
             return  0
         }
         
-        var preLink: WeakProxyLink<T>?
+        var preLink: WeakLinkNode<T>?
         var addObj = add
         func returnValue(_ count: Int) -> Int {
             guard let addObj = addObj else {
                 return count
             }
             guard let preLink = preLink else {
-                proxyLink = WeakProxyLink<T>(proxy: addObj)
+                proxyLink = WeakLinkNode<T>(val: addObj)
                 return 1
             }
             if let next = preLink.next {
-                next.next = WeakProxyLink<T>(proxy: addObj)
+                next.next = WeakLinkNode<T>(val: addObj)
             } else {
-                preLink.next = WeakProxyLink<T>(proxy: addObj)
+                preLink.next = WeakLinkNode<T>(val: addObj)
             }
             return count + 1
         }
@@ -156,7 +165,7 @@ extension MultiProxyObject {
         
         while true {
              /// 过滤已经释放的代理
-            guard let proxy = link.proxy else {
+            guard let proxy = link.val else {
                 if let count = removeCurrentProxy() { return returnValue(count) }
                 continue
             }

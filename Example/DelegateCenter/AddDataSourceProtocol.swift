@@ -8,6 +8,6 @@
 
 import Foundation
 
-@objc protocol AddDataSourceProtocol: NSObjectProtocol {
+@objc protocol AddDataSourceProtocol {
     func add()
 }

@@ -9,15 +9,16 @@
 import UIKit
 import DelegateCenter
 
-@objc public protocol TimerCenterProtocol: NSObjectProtocol {
+@objc public protocol TimerCenterProtocol {
     func timerInvoke(timer: Timer)
 }
 
 /// 定时器中心管理
-public class TimerCenter: MultiProxyObjectExcute {
+public class TimerCenter: MultiProxyObjectWrapper {
+    public typealias MPT = TimerCenterProtocol
+    
     public static let sharedTimer: TimerCenter = TimerCenter()
     
-    public typealias MTP = TimerCenterProtocol
     public lazy var proxyObject: MultiProxyObject<TimerCenterProtocol> = {
        let object = MultiProxyObject<TimerCenterProtocol>()
         object.delegate = self

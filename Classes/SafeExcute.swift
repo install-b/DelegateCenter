@@ -39,3 +39,16 @@ public extension SafeExcute {
         return try safeQueue.sync(execute: block)
     }
 }
+
+/// 安全执行包裹
+public protocol SafeExcuteWrapper {
+    /// 安全执行对象
+    var safeExcute: SafeExcute { get }
+}
+
+public extension SafeExcuteWrapper {
+    /// 安全执行方法拓展
+    func excute<T>(_ block: () throws -> T) rethrows -> T {
+        try safeExcute.excute(block)
+    }
+}

@@ -1,5 +1,5 @@
 //
-//  MultiProxyObjectExcute.swift
+//  MultiProxyObjectWrapper.swift
 //  DelegateCenter
 //
 //  Created by Shangen Zhang on 2020/7/5.
@@ -8,16 +8,17 @@
 import Foundation
 
 
+
 /// 组合模式拓展
-public protocol MultiProxyObjectExcute {
+public protocol MultiProxyObjectWrapper {
     /// 指定协议类型
-    associatedtype MPT: NSObjectProtocol
+    associatedtype MPT: ObjectClass
     /// 多代理链表
     var proxyObject: MultiProxyObject<MPT> { get }
 }
 
 /// 添加移除遍历通用操作
-public extension MultiProxyObjectExcute {
+public extension MultiProxyObjectWrapper {
     @discardableResult
     func add(delegate: MPT) -> Bool {
         proxyObject.add(delegate: delegate)

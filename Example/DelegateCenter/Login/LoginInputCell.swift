@@ -28,11 +28,11 @@ class TimeCountDownButton: UIButton {
             case .waite:
                 isSelected = false
                 isEnabled = true
-                TimerCenter.sharedTimer.remove(delegate: self)
+                TimerCenter.sharedTimer.remove(delegate: self as TimerCenterProtocol)
             case .disable:
                 isSelected = false
                 isEnabled = false
-                TimerCenter.sharedTimer.remove(delegate: self)
+                TimerCenter.sharedTimer.remove(delegate: self as TimerCenterProtocol)
             case .countDowning:
                 
                 isEnabled = true
@@ -40,7 +40,7 @@ class TimeCountDownButton: UIButton {
                 
                 setTitle("\(timeCount) s", for: .selected)
                
-                TimerCenter.sharedTimer.add(delegate: self)
+                TimerCenter.sharedTimer.add(delegate: self as TimerCenterProtocol)
             }
         }
     }
