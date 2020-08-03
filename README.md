@@ -14,9 +14,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 subscript protocol
 
 ```Swift
-
+/// Protocol Way
 // declare Protocol
-@objc protocol XXXProtocol: NSObjectProtocol {
+@objc protocol XXXProtocol {
     func aMethod()
 }
 
@@ -30,8 +30,33 @@ DelegateCenter.default.remove(self as XXXProtocol)
 
 // send message
 DelegateCenter.default.enumDelegate(XXXProtocol.self) { (delegate, _) in
-            delegate.aMethod()
-        }
+    delegate.aMethod()
+}
+        
+/// Abstract Class Way
+// declare Abstract Class
+class AClass {
+    open func aMethod() {
+
+    }
+}
+
+/// 
+class SubAClass: AClass {
+    overrite func aMethod() {
+        // sub Class implemention
+    }
+}
+
+let aInstance = SubAClass()
+DelegateCenter.default.add(aInstance as AClass)
+
+
+// send message
+DelegateCenter.default.enumDelegate(AClass.self) { (delegate, _) in
+    delegate.aMethod()
+}
+        
 ```
 
 ## Requirements
