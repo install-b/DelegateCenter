@@ -23,7 +23,7 @@ A protocol oriented notification Center
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
-
+  s.swift_version = "4.0"
   s.source_files = 'Classes/**/*'
   
   # s.resource_bundles = {
