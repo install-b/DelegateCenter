@@ -10,6 +10,17 @@ import UIKit
 import DelegateCenter
 
 
+enum TestENUM {
+    case ss
+    case ee
+}
+
+extension TestENUM: AddDataSourceProtocol {
+    func add() {
+        print("TestENUM add --- ")
+    }
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -18,6 +29,7 @@ class ViewController: UIViewController {
         let objc = TestClass()
         DelegateCenter.default.add(objc as AddDataSourceProtocol)
         DelegateCenter.default.add(self as AddDataSourceProtocol)
+        DelegateCenter.default.add(TestENUM.ee as AddDataSourceProtocol)
     }
 
     override func didReceiveMemoryWarning() {

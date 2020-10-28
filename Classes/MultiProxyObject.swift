@@ -99,6 +99,7 @@ public extension MultiProxyObject {
                 if stop.pointee.boolValue == false, let delegate = proxy as? T {
                     block(delegate, stop)
                 }
+                print("ccccc \(proxy)")
                 return false
             })
         }
