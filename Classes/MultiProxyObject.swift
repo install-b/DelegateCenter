@@ -8,7 +8,7 @@
 
 import Foundation
 
-public typealias ObjectClass = AnyObject
+public typealias ObjectClass = Any
 
 
 /// 多代理链表  代理变化协议
@@ -30,14 +30,12 @@ open class MultiProxyObject<T>: SafeExcuteWrapper where T: ObjectClass {
     }
     
     /// 代理集合 链表
-    private var proxyLink: WeakLinkNode<T>?
+    private var proxyLink: WeakLinkNode<AnyObject>?
     
     /// 代理
     public weak var delegate: MultiProxyObjectDelegate?
     
-    public init() {
-        
-    }
+    public init() { }
 }
 
 public extension MultiProxyObject {
@@ -46,16 +44,18 @@ public extension MultiProxyObject {
     /// - Parameter delegate: 代理
     @discardableResult
     func add(delegate: T) -> Bool {
+        let del = delegate as AnyObject
         return excute {
             guard proxyLink != nil else {
-                proxyLink = WeakLinkNode<T>(val: delegate)
+                proxyLink = WeakLinkNode<AnyObject>(val: del)
                 /// 代理数为1
                 proxyCount = 1
                 return true
             }
             var has = false
             proxyCount = enumrate(addNext: delegate, using: { (proxy) -> Bool in
-                if delegate === proxy  { 
+
+                if del === proxy  {
                     has = true
                     return true
                 }
@@ -69,11 +69,12 @@ public extension MultiProxyObject {
     /// - Parameter delegate: 从链表中删除一个代理
     @discardableResult
     func remove(delegate: T) -> Bool {
+        let del = delegate as AnyObject
         return excute {
             guard proxyLink != nil else {  proxyCount = 0; return false }
             var result = false
             proxyCount = enumrate(using: { (proxy) -> Bool in
-                if  delegate === proxy   {
+                if  del === proxy   {
                     result = true
                     return true
                 }
@@ -95,8 +96,8 @@ public extension MultiProxyObject {
             }
             stop.pointee = false
             proxyCount = enumrate(using:  { (proxy) -> Bool in
-                if stop.pointee.boolValue == false {
-                    block(proxy, stop)
+                if stop.pointee.boolValue == false, let delegate = proxy as? T {
+                    block(delegate, stop)
                 }
                 return false
             })
@@ -110,30 +111,26 @@ extension MultiProxyObject {
     ///   - proxyLink: 传入得
     ///   - block: 这个回调是
     ///   - addObj: 最后添加的代理 可以为空即结束遍历不做操作
-    private func enumrate(addNext add: T? = nil, using block:((_ delegate: T) -> Bool)) -> Int {
+    private func enumrate(addNext add: T? = nil, using block:((_ delegate: AnyObject) -> Bool)) -> Int {
         guard var link = proxyLink else {
-            if let addObj = add {
-                proxyLink = WeakLinkNode<T>(val: addObj)
-                return 1
-            }
-
-            return  0
+            proxyLink = WeakLinkNode<AnyObject>(val: add as AnyObject)
+            return 1
         }
         
-        var preLink: WeakLinkNode<T>?
+        var preLink: WeakLinkNode<AnyObject>?
         var addObj = add
         func returnValue(_ count: Int) -> Int {
             guard let addObj = addObj else {
                 return count
             }
             guard let preLink = preLink else {
-                proxyLink = WeakLinkNode<T>(val: addObj)
+                proxyLink = WeakLinkNode<AnyObject>(val: addObj as AnyObject)
                 return 1
             }
             if let next = preLink.next {
-                next.next = WeakLinkNode<T>(val: addObj)
+                next.next = WeakLinkNode<AnyObject>(val: addObj as AnyObject)
             } else {
-                preLink.next = WeakLinkNode<T>(val: addObj)
+                preLink.next = WeakLinkNode<AnyObject>(val: addObj as AnyObject)
             }
             return count + 1
         }

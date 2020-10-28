@@ -9,7 +9,7 @@
 import Foundation
 
 /// 链表 弱引用代理节点
-class WeakLinkNode<E> where E: ObjectClass {
+class WeakLinkNode<E> where E: AnyObject  {
     /// 弱引用代理
     weak var val: E?
      /// 下一个代理

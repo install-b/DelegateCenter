@@ -40,7 +40,7 @@ class ViewController: UIViewController {
 extension ViewController: AddDataSourceProtocol {
     func add() {
         
-         print("啊~~~")
+         print("ViewController 啊~~~")
     }
     
 //    func aMethod() {
@@ -49,7 +49,10 @@ extension ViewController: AddDataSourceProtocol {
 }
 
 class TestClass: AddDataSourceProtocol {
+    deinit {
+        print("TestClass deinit 🦴🦴🦴")
+    }
     func add() {
-        
+        print("TestClass 啊~~~")
     }
 }

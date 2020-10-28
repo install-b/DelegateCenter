@@ -9,7 +9,7 @@
 import UIKit
 import DelegateCenter
 
-@objc public protocol TimerCenterProtocol {
+public protocol TimerCenterProtocol {
     func timerInvoke(timer: Timer)
 }
 

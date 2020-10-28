@@ -17,6 +17,7 @@ class TableViewController0: UITableViewController {
     override func awakeFromNib() {
         super.awakeFromNib()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        DelegateCenter.default.add(self as AddDataSourceProtocol)
     }
 
     // MARK: - Table view data source
