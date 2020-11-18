@@ -1,5 +1,11 @@
 PODS:
-  - DelegateCenter (0.1.0)
+  - DelegateCenter (1.1.0):
+    - DelegateCenter/ForwardProxy (= 1.1.0)
+    - DelegateCenter/MultiProxyObject (= 1.1.0)
+  - DelegateCenter/ForwardProxy (1.1.0)
+  - DelegateCenter/MultiProxyObject (1.1.0):
+    - DelegateCenter/SafeExcute
+  - DelegateCenter/SafeExcute (1.1.0)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
@@ -15,7 +21,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  DelegateCenter: 990f7bf4b41ecb14e55bf5f3b380147e33742814
+  DelegateCenter: 87df906801c970477e1b58a6cfee0da80e322e4f
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
 PODFILE CHECKSUM: 92e880953219234fdf61e23313d59b874d06ccb8

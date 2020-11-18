@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DelegateCenter'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = ' Delegate Notification Center.'
 
   s.description      = <<-DESC
@@ -24,8 +24,23 @@ A protocol oriented notification Center
 
   s.ios.deployment_target = '8.0'
   s.swift_version = "4.0"
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'Classes/*.swift'
   
+  s.default_subspec = 'MultiProxyObject', 'ForwardProxy'
+  
+  s.subspec 'SafeExcute' do |ss|
+      ss.source_files = 'Classes/SafeExcute/**/*.swift'
+  end
+  
+  s.subspec 'ForwardProxy' do |ss|
+      ss.source_files = 'Classes/ForwardProxy/**/*.swift'
+  end
+  
+  s.subspec 'MultiProxyObject' do |ss|
+      ss.source_files = 'Classes/MultiProxyObject/**/*.swift'
+      ss.dependency 'DelegateCenter/SafeExcute'
+  end
+
   # s.resource_bundles = {
   #   'DelegateCenter' => ['DelegateCenter/Assets/*.png']
   # }
