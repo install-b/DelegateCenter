@@ -22,8 +22,8 @@ A protocol oriented notification Center
   s.source           = { :git => 'https://github.com/install-b/DelegateCenter.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
-  s.swift_version = "4.0"
+  s.ios.deployment_target = '9.0'
+  s.swift_version = "4.2"
   s.source_files = 'Classes/*.swift'
   
   s.default_subspec = 'MultiProxyObject', 'ForwardProxy'
@@ -33,7 +33,7 @@ A protocol oriented notification Center
   end
   
   s.subspec 'ForwardProxy' do |ss|
-      ss.source_files = 'Classes/ForwardProxy/**/*.swift'
+      ss.source_files = 'Classes/ForwardProxy/**/*.*'
   end
   
   s.subspec 'MultiProxyObject' do |ss|
